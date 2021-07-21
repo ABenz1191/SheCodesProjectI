@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link href="CSS/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather</title>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+      <div class="input-group" id="search-form">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter City"
+          aria-label="Recipient's username with two button addons"
+          id="search-text-input"
+        />
+        <button class="btn btn-outline-secondary searchButton" id="search-button" type="button">
+          Search
+        </button>
+        <button class="btn btn-outline-secondary locationButton" id="current-location-button" type="button">
+          Find My Location
+        </button>
+      </div>
+      </form>
+      <button type="button" class="btn btn-outline-info conversionButton">
+        F°/C°
+      </button>
+      <div class="row currentConditionsRow">
+         <div class="col-3 conditionSpecificsLeft">
+          <ul>
+            <li>
+              <h3>Sunrise</h3>
+              <p class="condition">0515</p>
+            </li>
+            <li>
+              <h3>Sunset</h3>
+              <p class="condition">2040</p>
+            </li>
+            <li>
+              <h3>Chance of Precipitation</h3>
+              <p class="condition">10%</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-5">
+          <div class="card mb-3 currentTempCard" style="max-width: 540px">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="images/partlycloudy.png" width="130px" class="currentTempImage" />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h1 class="card-title currentCity" id="local-city">Chicago</h1>
+                  <h1 class="card-text currentTemp" id="current-local-weather">65°</h1>
+                </br>
+                  <h5 class= >High/Low</h5>
+                  <p class="card-text" id="local-time-date">
+                    Last updated 3 mins ago
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 conditionSpecificsRight">
+          <ul>
+            <li>
+              <h3>Humidity</h3>
+              <p class="condition">55%</p>
+            </li>
+            <li>
+              <h3>Wind</h3>
+              <p class="condition">8 mph</p>
+            </li>
+            <li>
+              <h3>Visibility</h3>
+              <p class="condition">10 mi</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card todayForecast">
+        <div class="card-body forecastText">Today's Forecast...</div>
+      </div>
+      <br />
+      <div class="row hourlyCardSection">
+        <div class="col">
+          <div class="card hourlyCards" style="width: 7rem">
+            <div class="card-header hourlyCardHeader">1200</div>
+            <img src="images/PartlyCloudy.png" class="card-img-top partlyCloudyImage" />
+            <div class="card-body hourlyCardTemp">
+              <p class="card-text">80°</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card hourlyCards" style="width: 7rem">
+            <div class="card-header hourlyCardHeader">1300</div>
+            <img src="images/PartlyCloudy.png" class="card-img-top partlyCloudyImage" />
+            <div class="card-body hourlyCardTemp">
+              <p class="card-text">80°</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card hourlyCards" style="width: 7rem">
+            <div class="card-header hourlyCardHeader">1400</div>
+            <img src="Images/Cloudy.png" class="card-img-top cloudyImage" />
+            <div class="card-body hourlyCardTemp">
+              <p class="card-text">80°</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card hourlyCards" style="width: 7rem">
+            <div class="card-header hourlyCardHeader">1500</div>
+            <img src="Images/Cloudy.png" class="card-img-top cloudyImage" />
+            <div class="card-body hourlyCardTemp">
+              <p class="card-text">80°</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card hourlyCards" style="width: 7rem">
+            <div class="card-header hourlyCardHeader">1600</div>
+            <img src="Images/Cloudy.png" class="card-img-top cloudyImage" />
+            <div class="card-body hourlyCardTemp">
+              <p class="card-text">80°</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card hourlyCards" style="width: 7rem">
+            <div class="card-header hourlyCardHeader">1700</div>
+            <img src="Images/Moon.png" class="card-img-top moonImage" />
+            <div class="card-body hourlyCardTemp">
+              <p class="card-text">80°</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card hourlyCards" style="width: 7rem">
+            <div class="card-header hourlyCardHeader">1800</div>
+            <img src="Images/Moon.png" class="card-img-top moonImage" />
+            <div class="card-body hourlyCardTemp">
+              <p class="card-text">80°</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card hourlyCards" style="width: 7rem">
+            <div class="card-header hourlyCardHeader">1900</div>
+            <img src="Images/Moon.png" class="card-img-top moonImage"/>
+            <div class="card-body hourlyCardTemp">
+              <p class="card-text">80°</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="JavaScript/app.js"></script>
+  </body>
+</html>
