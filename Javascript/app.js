@@ -64,14 +64,9 @@ function searchUserPosition(event) {
 function retrieveUserPosition(position) {
   let apiKey = "383f7ea53619c38b753cfeb116648163";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
-  axios.get(apiUrl).then(displayFromCoordinates);
+  axios.get(apiUrl).then(displayCurrent);
 }
-function displayFromCoordinates(response) {
-  document.querySelector("#local-city").innerHTML = response.data.name;
-  document.querySelector("#current-local-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
-}
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 
