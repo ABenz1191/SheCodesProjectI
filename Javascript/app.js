@@ -1,5 +1,3 @@
-const axios = require("axios").default;
-
 let now = new Date();
 
 function formatDate() {
@@ -49,7 +47,7 @@ function searchCity(event) {
   let cityInput = document.querySelector("#search-text-input");
   let userCity = `${cityInput.value}`;
   let apiKey = "383f7ea53619c38b753cfeb116648163";
-  let apiUrl = `api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}`;
   axios.get(apiUrl).then(displayCurrent);
 }
 
