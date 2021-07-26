@@ -1,0 +1,190 @@
+body {
+  background-color: #031f40;
+}
+.container {
+  padding-top: 50px;
+}
+.searchButton,
+.locationButton {
+  color: white;
+  background-color: #375c89;
+  border-color: white;
+  border-width: medium;
+  border-radius: 10px;
+}
+.searchButton:hover {
+  color: #375c89;
+  background-color: white;
+  cursor: pointer;
+}
+.locationButton:hover {
+  color: #375c89;
+  background-color: white;
+  cursor: pointer;
+}
+.conversionButtons {
+  position: fixed;
+  right: 73px;
+  top: 110px;
+}
+.fahrenheitButton,
+.celsiusButton {
+  display: block;
+  border-color: white;
+  border-width: medium;
+  color: white;
+  background-color: #375c89;
+  border-radius: 10px;
+}
+.fahrenheitButton:hover {
+  color: #375c89;
+  background-color: white;
+  cursor: pointer;
+  border-color: dimgray;
+}
+.celsiusButton:hover {
+  color: #375c89;
+  background-color: white;
+  cursor: pointer;
+  border-color: dimgray;
+}
+
+.currentConditionsRow {
+  border-radius: 4px;
+  background-color: #375c89;
+  position: relative;
+  top: 50px;
+  bottom: 50px;
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+.currentTempCard {
+  border-radius: 10px;
+  position: relative;
+  left: 52px;
+  border-width: thin;
+  border-color: #053365;
+  box-shadow: 5px 5px 5px #031f40;
+}
+.currentCity {
+  text-align: center;
+  color: #053365;
+  font-weight: 700;
+  line-height: 75px;
+  font-size: 48px;
+}
+.currentTemp {
+  text-align: center;
+  color: #053365;
+  font-weight: 800;
+  line-height: 75px;
+  font-size: 60px;
+}
+h5 {
+  text-align: center;
+  color: #053365;
+}
+.currentDateTime {
+  text-align: center;
+  font-size: 12px;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+h3 {
+  text-align: center;
+  text-decoration: underline;
+  font-weight: 300;
+  color: #053365;
+  line-height: 40px;
+  font-size: 20px;
+}
+.conditionSpecificsLeft {
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+  left: 35px;
+  border-width: thin;
+  border-color: #053365;
+  box-shadow: 5px 5px 5px #031f40;
+}
+.conditionSpecificsRight {
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+  left: 70px;
+  border-width: thin;
+  border-color: #053365;
+  box-shadow: 5px 5px 5px #031f40;
+}
+.condition {
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: normal;
+  color: #053365;
+}
+.currentTempImage {
+  position: relative;
+  top: 60px;
+  left: 30px;
+  width: 100%;
+}
+.todayForecast {
+  position: relative;
+  top: 70px;
+  border-radius: 4px;
+  border-width: 20px;
+  border-color: #375c89;
+}
+.forecastText {
+  border-width: thin;
+  border-color: #031f40;
+  box-shadow: 5px 5px 5px #031f40;
+}
+.hourlyCardSection {
+  position: relative;
+  top: 75px;
+  background-color: #375c89;
+  border-radius: 4px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 15px;
+}
+.hourlyCardHeader {
+  text-align: center;
+  background-color: #053365;
+  color: white;
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.hourlyCards {
+  box-shadow: 5px 5px 5px #031f40;
+}
+.hourlyCardTemp {
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: #053365;
+  padding-bottom: 5px;
+}
+.partlyCloudyImage {
+  width: 92%;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+.moonImage {
+  width: 85%;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+.cloudyImage {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 7px;
+}
