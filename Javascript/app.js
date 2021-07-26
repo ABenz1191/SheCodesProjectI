@@ -78,4 +78,4 @@ let fahrenheitConversionButton = document.querySelector("#btnradio1");
 fahrenheitConversionButton.addEventListener("click", convertToFahrenheit);
 
 let coordinatesButton = document.querySelector("#current-location-button");
-coordinatesButton.addEventListener("click", getUserPosition);
+coordinatesButton.addEventListener("click", searchUserPosition);
