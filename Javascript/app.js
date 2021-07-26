@@ -47,7 +47,7 @@ function searchCity(event) {
   let cityInput = document.querySelector("#search-text-input");
   let userCity = `${cityInput.value}`;
   let apiKey = "383f7ea53619c38b753cfeb116648163";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayCurrent);
 }
 
@@ -57,7 +57,21 @@ function displayCurrent(response) {
   let updateCurrentTemp = document.querySelector("#current-local-temp");
   updateCurrentTemp.innerHTML = Math.round(response.data.main.temp);
 }
-
+function searchUserPosition(event) {
+  event.preventDefault();
+  navigator.geolocation.searchUserPosition(retrieveUserPosition);
+}
+function retrieveUserPosition(position) {
+  let apiKey = "383f7ea53619c38b753cfeb116648163";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayFromCoordinates);
+}
+function displayFromCoordinates(response) {
+  document.querySelector("#local-city").innerHTML = response.data.name;
+  document.querySelector("#current-local-temp").innerHTML = Math.round(
+    response.data.main.temp
+  );
+}
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 
@@ -66,3 +80,6 @@ celsiusConversionButton.addEventListener("click", convertToCelsius);
 
 let fahrenheitConversionButton = document.querySelector("#btnradio1");
 fahrenheitConversionButton.addEventListener("click", convertToFahrenheit);
+
+let coordinatesButton = document.querySelector("#current-location-button");
+coordinatesButton.addEventListener("click", searchUserPosition);
