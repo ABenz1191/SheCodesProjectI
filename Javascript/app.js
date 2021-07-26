@@ -56,7 +56,7 @@ function retrieveUserPosition(position) {
   axios.get(apiUrl).then(displayCurrent);
 }
 
-function getPosition(event) {
+function getUserPosition(event) {
   event.preventDefault();
   navigator.geolocation.searchUserPosition(retrieveUserPosition);
 }
@@ -78,4 +78,4 @@ let fahrenheitConversionButton = document.querySelector("#btnradio1");
 fahrenheitConversionButton.addEventListener("click", convertToFahrenheit);
 
 let coordinatesButton = document.querySelector("#current-location-button");
-coordinatesButton.addEventListener("click", getPosition);
+coordinatesButton.addEventListener("click", getUserPosition);
