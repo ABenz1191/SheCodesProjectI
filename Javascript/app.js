@@ -56,9 +56,9 @@ function retrieveUserPosition(position) {
   axios.get(apiUrl).then(displayCurrent);
 }
 
-function getUserPosition(event) {
+function searchUserPosition(event) {
   event.preventDefault();
-  navigator.geolocation.searchUserPosition(retrieveUserPosition);
+  navigator.geolocation.getCurrentPosition(retrieveUserPosition);
 }
 
 function displayCurrent(response) {
