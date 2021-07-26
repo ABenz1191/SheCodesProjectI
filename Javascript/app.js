@@ -1,3 +1,5 @@
+import axios from "axios";
+
 let now = new Date();
 
 function formatDate() {
@@ -60,6 +62,7 @@ function displayCurrent(response) {
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
+
 let celsiusConversionButton = document.querySelector("#btnradio2");
 celsiusConversionButton.addEventListener("click", convertToCelsius);
 
