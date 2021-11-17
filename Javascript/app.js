@@ -37,12 +37,6 @@ let displayLocalTime = document.querySelector("#display-time-date");
 let currentTimeDate = new Date();
 displayLocalTime.innerHTML = formatDate(currentTimeDate);
 
-let tempFahrenheit = Math.round(response.data.main.temp);
-let highFahrenheit = Math.round(response.data.main.temp_max);
-let lowFahrenheit = Math.round(response.data.main.temp_min);
-let windspeedImperial = Math.round(response.data.wind.speed);
-let heatIndexFahrenheit = Math.round(response.data.main.feels_like);
-
 function searchCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#search-text-input");
@@ -83,27 +77,33 @@ function displayCurrent(response) {
   updateCurrentHigh.innerHTML = Math.round(response.data.main.temp_max);
   let updateCurrentLow = document.querySelector("#current-local-low");
   updateCurrentLow.innerHTML = Math.round(response.data.main.temp_min);
+
+  let updateCurrentTemp = Math.round(response.data.main.temp);
+  let updateCurrentHigh = Math.round(response.data.main.temp_max);
+  let updateCurrentLow = Math.round(response.data.main.temp_min);
+  let updateCurrentWind = Math.round(response.data.wind.speed);
+  let updateCurrentHeatIndex = Math.round(response.data.main.feels_like);
 }
 
 function convertToCelsius(event) {
   event.preventDefault();
 
   let tempCelsius = document.querySelector("#current-local-temp");
-  let tempCelsiusConversion = Math.round((tempFahrenheit - 32) / 1.8);
+  let tempCelsiusConversion = Math.round((updateCurrentTemp - 32) / 1.8);
   tempCelsius.innerHTML = `${tempCelsiusConversion}`;
   let tempUnitsCelsius = document.querySelector("#temp-units");
   tempUnitsCelsius.innerHTML = "°C";
 
   let displayHighCelsius = document.querySelector("#current-local-high");
-  let highCelsiusConversion = Math.round((highFahrenheit - 32) / 1.8);
+  let highCelsiusConversion = Math.round((updateCurrentHigh - 32) / 1.8);
   displayHighCelsius.innerHTML = `${highCelsiusConversion}`;
 
   let displayLowCelsius = document.querySelector("#current-local-low");
-  let lowCelsiusConversion = Math.round((lowFahrenheit - 32) / 1.8);
+  let lowCelsiusConversion = Math.round((updateCurrentLow - 32) / 1.8);
   displayLowCelsius.innerHTML = `${lowCelsiusConversion}`;
 
   let displayWindspeedMetric = document.querySelector("#current-local-wind");
-  let windspeedMetricConversion = Math.round(windspeedImperial * 0.447);
+  let windspeedMetricConversion = Math.round(updateCurrentWind * 0.447);
   displayWindspeedMetric.innerHTML = `${windspeedMetricConversion}`;
 
   let windspeedUnitsMetric = document.querySelector("#wind-units");
@@ -112,7 +112,9 @@ function convertToCelsius(event) {
   let displayHeatIndexCelsius = document.querySelector(
     "#current-local-heat-index"
   );
-  let heatIndexCelsiusConversion = Math.round((heatIndexFahrenheit - 32) / 1.8);
+  let heatIndexCelsiusConversion = Math.round(
+    (updateCurrentHeatIndex - 32) / 1.8
+  );
   displayHeatIndexCelsius.innerHTML = `${heatIndexCelsiusConversion}`;
 
   let heatIndexUnitsCelsius = document.querySelector("#heat-index-units");
