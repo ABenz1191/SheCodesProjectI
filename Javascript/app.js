@@ -121,10 +121,14 @@ function convertToCelsius(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 
-let celsiusConversionButton = document.querySelector("#btnradio2");
-celsiusConversionButton.addEventListener("onclick", convertToCelsius);
+let celsiusConversionButton = document.querySelector(
+  "#celsius-conversion-button"
+);
+celsiusConversionButton.addEventListener("click", convertToCelsius);
 
-let fahrenheitConversionButton = document.querySelector("#btnradio1");
+let fahrenheitConversionButton = document.querySelector(
+  "#fahrenheit-conversion-button"
+);
 fahrenheitConversionButton.addEventListener("click", displayCurrent(response));
 
 let coordinatesButton = document.querySelector("#current-location-button");
