@@ -37,6 +37,12 @@ let displayLocalTime = document.querySelector("#display-time-date");
 let currentTimeDate = new Date();
 displayLocalTime.innerHTML = formatDate(currentTimeDate);
 
+let tempFahrenheit = Math.round(response.data.main.temp);
+let highFahrenheit = Math.round(response.data.main.temp_max);
+let lowFahrenheit = Math.round(response.data.main.temp_min);
+let windspeedImperial = Math.round(response.data.wind.speed);
+let heatIndexFahrenheit = Math.round(response.data.main.feels_like);
+
 function searchCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#search-text-input");
@@ -81,11 +87,6 @@ function displayCurrent(response) {
 
 function convertToCelsius(event) {
   event.preventDefault();
-  let tempFahrenheit = Math.round(response.data.main.temp);
-  let highFahrenheit = Math.round(response.data.main.temp_max);
-  let lowFahrenheit = Math.round(response.data.main.temp_min);
-  let windspeedImperial = Math.round(response.data.wind.speed);
-  let heatIndexFahrenheit = Math.round(response.data.main.feels_like);
 
   let tempCelsius = document.querySelector("#current-local-temp");
   let tempCelsiusConversion = Math.round((tempFahrenheit - 32) / 1.8);
