@@ -3,6 +3,9 @@ let now = new Date();
 function formatDate() {
   let date = now.getDate();
   let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
   let minutes = now.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
@@ -33,50 +36,6 @@ function formatDate() {
 let displayLocalTime = document.querySelector("#display-time-date");
 let currentTimeDate = new Date();
 displayLocalTime.innerHTML = formatDate(currentTimeDate);
-
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let tempFahrenheit = document.querySelector("#current-local-temp");
-  tempFahrenheit.innerHTML = response.data.main.temp;
-}
-function convertToCelsius(event) {
-  event.preventDefault();
-  let tempFahrenheit = Math.round(response.data.main.temp);
-  let highFahrenheit = Math.round(response.data.main.temp_max);
-  let lowFahrenheit = Math.round(response.data.main.temp_min);
-  let windspeedImperial = Math.round(response.data.wind.speed);
-  let unchangedVisibility = response.data.visibility;
-
-  let tempCelsius = document.querySelector("#current-local-temp");
-  let tempCelsiusConversion = (tempFahrenheit - 32) / 1.8;
-  tempCelsius.innerHTML = Math.round(tempCelsiusConversion);
-  let tempUnitsCelsius = document.querySelector("#temp-units");
-  tempUnitsCelsius.innerHTML = "°C";
-
-  let displayHighCelsius = document.querySelector("#current-local-high");
-  let highCelsiusConversion = (highFahrenheit - 32) / 1.8;
-  displayHighCelsius.innerHTML = Math.round(highCelsiusConversion);
-
-  let displayLowCelsius = document.querySelector("#current-local-low");
-  let lowCelsiusConversion = (lowFahrenheit - 32) / 1.8;
-  displayLowCelsius.innerHTML = Math.round(lowCelsiusConversion);
-
-  let displayWindspeedMetric = document.querySelector("#current-local-wind");
-  let windspeedMetricConversion = windspeedImperial * 0.447;
-  displayWindspeedMetric.innerHTML = Math.round(windspeedMetricConversion);
-
-  let windspeedUnitsMetric = document.querySelector("#wind-units");
-  windspeedUnitsMetric.innerHTML = "m/s";
-
-  let displayVisibilityMetric = document.querySelector(
-    "#current-local-visibility"
-  );
-  let visibilityMetricConversion = unchangedVisibility / 1000;
-  displayVisibilityMetric.innerHTML = Math.round(visibilityMetricConversion);
-
-  let visibilityUnitsMetric = document.querySelector("#visibility-units");
-  visibilityUnitsMetric.innerHTML = "km";
-}
 
 function searchCity(event) {
   event.preventDefault();
@@ -110,16 +69,53 @@ function displayCurrent(response) {
   updateCurrentHumidity.innerHTML = response.data.main.humidity;
   let updateCurrentWind = document.querySelector("#current-local-wind");
   updateCurrentWind.innerHTML = Math.round(response.data.wind.speed);
-  let unchangedVisibility = response.data.visibility;
-  let visibilityToImperial = (unchangedVisibility / 1000) * 0.6214;
-  let updateCurrentVisibility = document.querySelector(
-    "#current-local-visibility"
+  let updateCurrentHeatIndex = document.querySelector(
+    "#current-local-heat-index"
   );
-  updateCurrentVisibility.innerHTML = Math.round(visibilityToImperial);
+  updateCurrentHeatIndex.innerHTML = Math.round(response.data.main.feels_like);
   let updateCurrentHigh = document.querySelector("#current-local-high");
   updateCurrentHigh.innerHTML = Math.round(response.data.main.temp_max);
   let updateCurrentLow = document.querySelector("#current-local-low");
   updateCurrentLow.innerHTML = Math.round(response.data.main.temp_min);
+}
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  let tempFahrenheit = Math.round(response.data.main.temp);
+  let highFahrenheit = Math.round(response.data.main.temp_max);
+  let lowFahrenheit = Math.round(response.data.main.temp_min);
+  let windspeedImperial = Math.round(response.data.wind.speed);
+  let heatIndexFahrenheit = Math.round(response.data.main.feels_like);
+
+  let tempCelsius = document.querySelector("#current-local-temp");
+  let tempCelsiusConversion = Math.round((tempFahrenheit - 32) / 1.8);
+  tempCelsius.innerHTML = `${tempCelsiusConversion}`;
+  let tempUnitsCelsius = document.querySelector("#temp-units");
+  tempUnitsCelsius.innerHTML = "°C";
+
+  let displayHighCelsius = document.querySelector("#current-local-high");
+  let highCelsiusConversion = Math.round((highFahrenheit - 32) / 1.8);
+  displayHighCelsius.innerHTML = `${highCelsiusConversion}`;
+
+  let displayLowCelsius = document.querySelector("#current-local-low");
+  let lowCelsiusConversion = Math.round((lowFahrenheit - 32) / 1.8);
+  displayLowCelsius.innerHTML = `${lowCelsiusConversion}`;
+
+  let displayWindspeedMetric = document.querySelector("#current-local-wind");
+  let windspeedMetricConversion = Math.round(windspeedImperial * 0.447);
+  displayWindspeedMetric.innerHTML = `${windspeedMetricConversion}`;
+
+  let windspeedUnitsMetric = document.querySelector("#wind-units");
+  windspeedUnitsMetric.innerHTML = "m/s";
+
+  let displayHeatIndexCelsius = document.querySelector(
+    "#current-local-heat-index"
+  );
+  let heatIndexCelsiusConversion = Math.round((heatIndexFahrenheit - 32) / 1.8);
+  displayHeatIndexCelsius.innerHTML = `${heatIndexCelsiusConversion}`;
+
+  let heatIndexUnitsCelsius = document.querySelector("#heat-index-units");
+  heatIndexUnitsCelsius.innerHTML = "C°";
 }
 
 let searchForm = document.querySelector("#search-form");
@@ -129,9 +125,7 @@ let celsiusConversionButton = document.querySelector("#btnradio2");
 celsiusConversionButton.addEventListener("onclick", convertToCelsius);
 
 let fahrenheitConversionButton = document.querySelector("#btnradio1");
-fahrenheitConversionButton.addEventListener("click", convertToFahrenheit);
+fahrenheitConversionButton.addEventListener("click", displayCurrent(response));
 
 let coordinatesButton = document.querySelector("#current-location-button");
 coordinatesButton.addEventListener("click", searchUserPosition);
-
-let fahrenheitTemp = response.data.main.temp;
