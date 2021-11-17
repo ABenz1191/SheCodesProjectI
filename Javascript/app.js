@@ -129,7 +129,7 @@ celsiusConversionButton.addEventListener("click", convertToCelsius);
 let fahrenheitConversionButton = document.querySelector(
   "#fahrenheit-conversion-button"
 );
-fahrenheitConversionButton.addEventListener("click", displayCurrent(response));
+fahrenheitConversionButton.addEventListener("click", displayCurrent);
 
 let coordinatesButton = document.querySelector("#current-location-button");
 coordinatesButton.addEventListener("click", searchUserPosition);
