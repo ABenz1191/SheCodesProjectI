@@ -57,6 +57,12 @@ function searchUserPosition(event) {
 }
 
 function displayCurrent(response) {
+  let updateCurrentTemp = Math.round(response.data.main.temp);
+  let updateCurrentHigh = Math.round(response.data.main.temp_max);
+  let updateCurrentLow = Math.round(response.data.main.temp_min);
+  let updateCurrentWind = Math.round(response.data.wind.speed);
+  let updateCurrentHeatIndex = Math.round(response.data.main.feels_like);
+
   let updateCurrentCity = document.querySelector("#local-city");
   updateCurrentCity.innerHTML = response.data.name;
   let updateCurrentTemp = document.querySelector("#current-local-temp");
@@ -77,12 +83,6 @@ function displayCurrent(response) {
   updateCurrentHigh.innerHTML = Math.round(response.data.main.temp_max);
   let updateCurrentLow = document.querySelector("#current-local-low");
   updateCurrentLow.innerHTML = Math.round(response.data.main.temp_min);
-
-  let updateCurrentTemp = Math.round(response.data.main.temp);
-  let updateCurrentHigh = Math.round(response.data.main.temp_max);
-  let updateCurrentLow = Math.round(response.data.main.temp_min);
-  let updateCurrentWind = Math.round(response.data.wind.speed);
-  let updateCurrentHeatIndex = Math.round(response.data.main.feels_like);
 }
 
 function convertToCelsius(event) {
