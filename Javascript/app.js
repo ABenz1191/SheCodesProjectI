@@ -57,12 +57,6 @@ function searchUserPosition(event) {
 }
 
 function displayCurrent(response) {
-  let updateCurrentTemp = Math.round(response.data.main.temp);
-  let updateCurrentHigh = Math.round(response.data.main.temp_max);
-  let updateCurrentLow = Math.round(response.data.main.temp_min);
-  let updateCurrentWind = Math.round(response.data.wind.speed);
-  let updateCurrentHeatIndex = Math.round(response.data.main.feels_like);
-
   let updateCurrentCity = document.querySelector("#local-city");
   updateCurrentCity.innerHTML = response.data.name;
   let updateCurrentTemp = document.querySelector("#current-local-temp");
@@ -136,3 +130,9 @@ fahrenheitConversionButton.addEventListener("click", displayCurrent);
 
 let coordinatesButton = document.querySelector("#current-location-button");
 coordinatesButton.addEventListener("click", searchUserPosition);
+
+let updateCurrentTemp = Math.round(response.data.main.temp);
+let updateCurrentHigh = Math.round(response.data.main.temp_max);
+let updateCurrentLow = Math.round(response.data.main.temp_min);
+let updateCurrentWind = Math.round(response.data.wind.speed);
+let updateCurrentHeatIndex = Math.round(response.data.main.feels_like);
