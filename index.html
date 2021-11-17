@@ -38,7 +38,7 @@
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
 		<label class="btn btn-outline-primary fahrenheitButton" for="btnradio1">F°</label>
 	
-		<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+		<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="convertToCelsius(event)">
 		<label class="btn btn-outline-primary celsiusButton" for="btnradio2">C°</label>
 				</div>
 				</form>
@@ -50,11 +50,11 @@
           <ul>
             <li>
               <h3>Sunrise</h3>
-              <p class="condition">0515</p>
+              <p class="condition" id="current-local-sunrise">0515</p>
             </li>
             <li>
               <h3>Sunset</h3>
-              <p class="condition">2040</p>
+              <p class="condition" id="current-local-sunset">2040</p>
             </li>
             <li>
               <h3>Chance of Precipitation</h3>
@@ -72,12 +72,12 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <h1 class="card-title currentCity" id="local-city">Chicago</h1>
-                  <h1 class="card-text currentTemp"><span id="current-local-temp">65</span>°</h1>
+                  <h1 class="card-text currentTemp"><span id="current-local-temp">65</span><span id="temp-units">°F</span></h1>
 								</br>
 								
-                  <h5 class= >High/Low</h5>
+                  <h5 class="highLow">H:<span id="current-local-high"></span>°/ L:<span id="current-local-low"></span>°</h5>
                   <p class="card-text currentDateTime" id="display-time-date">
-                    Last updated 3 mins ago
+                    Last updated 1 min ago
                   </p>
                 </div>
               </div>
@@ -89,15 +89,15 @@
           <ul>
             <li>
               <h3>Humidity</h3>
-              <p class="condition">55%</p>
+              <p class="condition"><span id="current-local-humidity">55</span>%</p>
             </li>
             <li>
               <h3>Wind</h3>
-              <p class="condition">8 mph</p>
+              <p class="condition"><span id="current-local-wind">8</span><span id="wind-units"> mph</span></p>
             </li>
             <li>
               <h3>Visibility</h3>
-              <p class="condition">10 mi</p>
+              <p class="condition"><span id="current-local-visibility">10</span><span id="visibility-units"> mi</span></p>
             </li>
           </ul>
         </div>
