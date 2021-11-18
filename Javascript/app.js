@@ -65,15 +65,17 @@ function displayCurrent(response) {
   let updateCurrentConditions = document.querySelector(
     "#current-local-conditions"
   );
-  updateCurrentConditions.innerHTML = response.data.sys.weather.description;
+  updateCurrentConditions.innerHTML = response.data.weather[0].main;
   let updateCurrentCloudCoverage = document.querySelector(
     "#current-local-cloud-coverage"
   );
-  updateCurrentCloudCoverage.innerHTML = response.data.clouds.all;
+  updateCurrentCloudCoverage.innerHTML = response.data.clouds.all + "%";
   let updateCurrentHumidity = document.querySelector("#current-local-humidity");
   updateCurrentHumidity.innerHTML = response.data.main.humidity;
-  let updateCurrentWind = document.querySelector("#current-local-wind");
-  updateCurrentWind.innerHTML = Math.round(response.data.wind.speed);
+  let updateCurrentWindSpeed = document.querySelector(
+    "#current-local-wind-speed"
+  );
+  updateCurrentWindSpeed.innerHTML = Math.round(response.data.wind.speed);
   windspeedImperial = response.data.wind.speed;
   let updateCurrentHeatIndex = document.querySelector(
     "#current-local-heat-index"
@@ -86,6 +88,36 @@ function displayCurrent(response) {
   let updateCurrentLow = document.querySelector("#current-local-low");
   updateCurrentLow.innerHTML = Math.round(response.data.main.temp_min);
   lowFahrenheit = response.data.main.temp_min;
+  updateCurrentVisibility = document.querySelector("#current-local-visibility");
+  updateCurrentVisibility.innerHTML = response.data.visibility + "m";
+
+  let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let updateHourlyTimeCard0 = document.querySelector("#hourly-cardheader-0");
+  updateHourlyTimeCard0.innerHTML = `${hours}00`;
+  let updateHourlyTimeCard1 = document.querySelector("#hourly-cardheader-1");
+  let hourlyTimeCard1Conversion = Math.round(hours + 1);
+  updateHourlyTimeCard1.innerHTML = `${hourlyTimeCard1Conversion}00`;
+  let updateHourlyTimeCard2 = document.querySelector("#hourly-cardheader-2");
+  let hourlyTimeCard1Conversion = Math.round(hours + 2);
+  updateHourlyTimeCard2.innerHTML = `${hourlyTimeCard2Conversion}00`;
+  let updateHourlyTimeCard3 = document.querySelector("#hourly-cardheader-3");
+  let hourlyTimeCard3Conversion = Math.round(hours + 3);
+  updateHourlyTimeCard3.innerHTML = `${hourlyTimeCard3Conversion}00`;
+  let updateHourlyTimeCard4 = document.querySelector("#hourly-cardheader-4");
+  let hourlyTimeCard4Conversion = Math.round(hours + 4);
+  updateHourlyTimeCard4.innerHTML = `${hourlyTimeCard4Conversion}00`;
+  let updateHourlyTimeCard5 = document.querySelector("#hourly-cardheader-5");
+  let hourlyTimeCard5Conversion = Math.round(hours + 5);
+  updateHourlyTimeCard5.innerHTML = `${hourlyTimeCard5Conversion}00`;
+  let updateHourlyTimeCard6 = document.querySelector("#hourly-cardheader-6");
+  let hourlyTimeCard6Conversion = Math.round(hours + 6);
+  updateHourlyTimeCard6.innerHTML = `${hourlyTimeCard6Conversion}00`;
+  let updateHourlyTimeCard7 = document.querySelector("#hourly-cardheader-7");
+  let hourlyTimeCard7Conversion = Math.round(hours + 7);
+  updateHourlyTimeCard7.innerHTML = `${hourlyTimeCard7Conversion}00`;
 }
 
 function convertToCelsius(event) {
@@ -106,7 +138,9 @@ function convertToCelsius(event) {
   let lowCelsiusConversion = Math.round((lowFahrenheit - 32) / 1.8);
   displayLowCelsius.innerHTML = `${lowCelsiusConversion}`;
 
-  let displayWindspeedMetric = document.querySelector("#current-local-wind");
+  let displayWindspeedMetric = document.querySelector(
+    "#current-local-wind-speed"
+  );
   let windspeedMetricConversion = Math.round(windspeedImperial * 0.447);
   displayWindspeedMetric.innerHTML = `${windspeedMetricConversion}`;
 
@@ -130,7 +164,7 @@ function convertToFahrenheit(event) {
   let tempUnitsFahrenheit = document.querySelector("#temp-units");
   tempUnitsFahrenheit.innerHTML = " °F";
 
-  let displayWindImperial = document.querySelector("#current-local-wind");
+  let displayWindImperial = document.querySelector("#current-local-wind-speed");
   displayWindImperial.innerHTML = Math.round(windspeedImperial);
 
   let windspeedUnitsImperial = document.querySelector("#wind-units");
