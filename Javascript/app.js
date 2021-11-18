@@ -92,7 +92,7 @@ function convertToCelsius(event) {
   tempCelsius.innerHTML = `${tempCelsiusConversion}`;
 
   let tempUnitsCelsius = document.querySelector("#temp-units");
-  tempUnitsCelsius.innerHTML = "°C";
+  tempUnitsCelsius.innerHTML = " °C";
 
   let displayHighCelsius = document.querySelector("#current-local-high");
   let highCelsiusConversion = Math.round((highFahrenheit - 32) / 1.8);
@@ -107,7 +107,7 @@ function convertToCelsius(event) {
   displayWindspeedMetric.innerHTML = `${windspeedMetricConversion}`;
 
   let windspeedUnitsMetric = document.querySelector("#wind-units");
-  windspeedUnitsMetric.innerHTML = "m/s";
+  windspeedUnitsMetric.innerHTML = " m/s";
 
   let displayHeatIndexCelsius = document.querySelector(
     "#current-local-heat-index"
@@ -130,7 +130,7 @@ celsiusConversionButton.addEventListener("click", convertToCelsius);
 let fahrenheitConversionButton = document.querySelector(
   "#fahrenheit-conversion-button"
 );
-fahrenheitConversionButton.addEventListener("click", displayCurrent);
+fahrenheitConversionButton.addEventListener("click", displayCurrent(response));
 
 let coordinatesButton = document.querySelector("#current-location-button");
 coordinatesButton.addEventListener("click", searchUserPosition);
