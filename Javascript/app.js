@@ -62,10 +62,14 @@ function displayCurrent(response) {
   let updateCurrentTemp = document.querySelector("#current-local-temp");
   updateCurrentTemp.innerHTML = Math.round(response.data.main.temp);
   tempFahrenheit = response.data.main.temp;
-  let updateCurrentSunrise = document.querySelector("#current-local-sunrise");
-  updateCurrentSunrise.innerHTML = response.data.sys.sunrise;
-  let updateCurrentSunset = document.querySelector("#current-local-sunset");
-  updateCurrentSunset.innerHTML = response.data.sys.sunset;
+  let updateCurrentConditions = document.querySelector(
+    "#current-local-conditions"
+  );
+  updateCurrentConditions.innerHTML = response.data.sys.weather.description;
+  let updateCurrentCloudCoverage = document.querySelector(
+    "#current-local-cloud-coverage"
+  );
+  updateCurrentCloudCoverage.innerHTML = response.data.clouds.all;
   let updateCurrentHumidity = document.querySelector("#current-local-humidity");
   updateCurrentHumidity.innerHTML = response.data.main.humidity;
   let updateCurrentWind = document.querySelector("#current-local-wind");
@@ -116,7 +120,35 @@ function convertToCelsius(event) {
   displayHeatIndexCelsius.innerHTML = `${heatIndexCelsiusConversion}`;
 
   let heatIndexUnitsCelsius = document.querySelector("#heat-index-units");
-  heatIndexUnitsCelsius.innerHTML = "C°";
+  heatIndexUnitsCelsius.innerHTML = " °C";
+}
+
+function convertToFahrenheit(event) {
+  let displayTempFahrenheit = document.querySelector("#current-local-temp");
+  displayTempFahrenheit.innerHTML = Math.round(tempFahrenheit);
+
+  let tempUnitsFahrenheit = document.querySelector("#temp-units");
+  tempUnitsFahrenheit.innerHTML = " °F";
+
+  let displayWindImperial = document.querySelector("#current-local-wind");
+  displayWindImperial.innerHTML = Math.round(windspeedImperial);
+
+  let windspeedUnitsImperial = document.querySelector("#wind-units");
+  windspeedUnitsImperial.innerHTML = " mph";
+
+  let displayHeatIndexFahrenheit = document.querySelector(
+    "#current-local-heat-index"
+  );
+  displayHeatIndexFahrenheit.innerHTML = Math.round(heatIndexFahrenheit);
+
+  let displayHighFahrenheit = document.querySelector("#current-local-high");
+  displayHighFahrenheit.innerHTML = Math.round(highFahrenheit);
+
+  let displayLowFahrenheit = document.querySelector("#current-local-low");
+  displayLowFahrenheit.innerHTML = Math.round(lowFahrenheit);
+
+  let heatIndexUnitsFahrenheit = document.querySelector("#heat-index-units");
+  heatIndexUnitsFahrenheit.innerHTML = " °F";
 }
 
 let searchForm = document.querySelector("#search-form");
@@ -130,7 +162,7 @@ celsiusConversionButton.addEventListener("click", convertToCelsius);
 let fahrenheitConversionButton = document.querySelector(
   "#fahrenheit-conversion-button"
 );
-fahrenheitConversionButton.addEventListener("click", displayCurrent(response));
+fahrenheitConversionButton.addEventListener("click", convertToFahrenheit);
 
 let coordinatesButton = document.querySelector("#current-location-button");
 coordinatesButton.addEventListener("click", searchUserPosition);
