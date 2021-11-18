@@ -62,6 +62,8 @@ function displayCurrent(response) {
   let updateCurrentTemp = document.querySelector("#current-local-temp");
   updateCurrentTemp.innerHTML = Math.round(response.data.main.temp);
   tempFahrenheit = response.data.main.temp;
+  let updateHourlyTemp0 = document.querySelector("#hourly-card-temp-0");
+  updateHourlyTemp0.innerHTML = Math.round(tempFahrenheit) + "°";
   let updateCurrentConditions = document.querySelector(
     "#current-local-conditions"
   );
@@ -100,9 +102,11 @@ function displayCurrent(response) {
   let updateHourlyTimeCard1 = document.querySelector("#hourly-cardheader-1");
   let hourlyTimeCard1Conversion = Math.round(hours + 1);
   updateHourlyTimeCard1.innerHTML = `${hourlyTimeCard1Conversion}00`;
+
   let updateHourlyTimeCard2 = document.querySelector("#hourly-cardheader-2");
-  let hourlyTimeCard1Conversion = Math.round(hours + 2);
+  let hourlyTimeCard2Conversion = Math.round(hours + 2);
   updateHourlyTimeCard2.innerHTML = `${hourlyTimeCard2Conversion}00`;
+
   let updateHourlyTimeCard3 = document.querySelector("#hourly-cardheader-3");
   let hourlyTimeCard3Conversion = Math.round(hours + 3);
   updateHourlyTimeCard3.innerHTML = `${hourlyTimeCard3Conversion}00`;
@@ -129,6 +133,9 @@ function convertToCelsius(event) {
 
   let tempUnitsCelsius = document.querySelector("#temp-units");
   tempUnitsCelsius.innerHTML = " °C";
+
+  let displayHourlyTemp0Celsius = document.querySelector("#hourly-card-temp-0");
+  displayHourlyTemp0Celsius.innerHTML = `${tempCelsiusConversion}°`;
 
   let displayHighCelsius = document.querySelector("#current-local-high");
   let highCelsiusConversion = Math.round((highFahrenheit - 32) / 1.8);
@@ -163,6 +170,11 @@ function convertToFahrenheit(event) {
 
   let tempUnitsFahrenheit = document.querySelector("#temp-units");
   tempUnitsFahrenheit.innerHTML = " °F";
+
+  let displayHourlyTemp0Fahrenheit = document.querySelector(
+    "#hourly-card-temp-0"
+  );
+  displayHourlyTemp0Fahrenheit.innerHTML = Math.round(tempFahrenheit) + "°";
 
   let displayWindImperial = document.querySelector("#current-local-wind-speed");
   displayWindImperial.innerHTML = Math.round(windspeedImperial);
