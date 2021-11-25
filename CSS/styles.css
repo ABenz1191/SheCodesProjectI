@@ -173,21 +173,12 @@ h3 {
   color: #053365;
   padding-bottom: 5px;
 }
-.partlyCloudyImage {
+.iconImage {
   width: 92%;
   margin: 0 auto;
   padding-top: 5px;
 }
-.moonImage {
-  width: 85%;
-  margin: 0 auto;
-  padding-top: 5px;
-}
-.cloudyImage {
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 7px;
-}
+
 .githubRepositoryLink {
   display: block;
   position: relative;

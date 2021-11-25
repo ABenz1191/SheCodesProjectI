@@ -100,37 +100,122 @@ function displayCurrent(response) {
   let updateHourlyTimeCard0 = document.querySelector("#hourly-cardheader-0");
   updateHourlyTimeCard0.innerHTML = `${hours}00`;
   let updateHourlyTimeCard1 = document.querySelector("#hourly-cardheader-1");
-  let hourlyTimeCard1Conversion = Math.round(hours + 1);
+  let hourlyTimeCard1Conversion = now.getHours() + 1;
+  if (hourlyTimeCard1Conversion < 10) {
+    hourlyTimeCard1Conversion = `0${hourlyTimeCard1Conversion}`;
+  }
   updateHourlyTimeCard1.innerHTML = `${hourlyTimeCard1Conversion}00`;
 
   let updateHourlyTimeCard2 = document.querySelector("#hourly-cardheader-2");
-  let hourlyTimeCard2Conversion = Math.round(hours + 2);
+  let hourlyTimeCard2Conversion = now.getHours() + 2;
+  if (hourlyTimeCard2Conversion < 10) {
+    hourlyTimeCard2Conversion = `0${hourlyTimeCard2Conversion}`;
+  }
   updateHourlyTimeCard2.innerHTML = `${hourlyTimeCard2Conversion}00`;
 
   let updateHourlyTimeCard3 = document.querySelector("#hourly-cardheader-3");
-  let hourlyTimeCard3Conversion = Math.round(hours + 3);
+  let hourlyTimeCard3Conversion = now.getHours() + 3;
+  if (hourlyTimeCard3Conversion < 10) {
+    hourlyTimeCard3Conversion = `0${hourlyTimeCard3Conversion}`;
+  }
   updateHourlyTimeCard3.innerHTML = `${hourlyTimeCard3Conversion}00`;
+
   let updateHourlyTimeCard4 = document.querySelector("#hourly-cardheader-4");
-  let hourlyTimeCard4Conversion = Math.round(hours + 4);
+  let hourlyTimeCard4Conversion = now.getHours() + 4;
+  if (hourlyTimeCard4Conversion < 10) {
+    hourlyTimeCard4Conversion = `0${hourlyTimeCard4Conversion}`;
+  }
   updateHourlyTimeCard4.innerHTML = `${hourlyTimeCard4Conversion}00`;
+
   let updateHourlyTimeCard5 = document.querySelector("#hourly-cardheader-5");
-  let hourlyTimeCard5Conversion = Math.round(hours + 5);
+  let hourlyTimeCard5Conversion = now.getHours() + 5;
+  if (hourlyTimeCard5Conversion < 10) {
+    hourlyTimeCard5Conversion = `0${hourlyTimeCard5Conversion}`;
+  }
   updateHourlyTimeCard5.innerHTML = `${hourlyTimeCard5Conversion}00`;
+
   let updateHourlyTimeCard6 = document.querySelector("#hourly-cardheader-6");
-  let hourlyTimeCard6Conversion = Math.round(hours + 6);
+  let hourlyTimeCard6Conversion = now.getHours() + 6;
+  if (hourlyTimeCard6Conversion < 10) {
+    hourlyTimeCard6Conversion = `0${hourlyTimeCard6Conversion}`;
+  }
   updateHourlyTimeCard6.innerHTML = `${hourlyTimeCard6Conversion}00`;
+
   let updateHourlyTimeCard7 = document.querySelector("#hourly-cardheader-7");
-  let hourlyTimeCard7Conversion = Math.round(hours + 7);
+  let hourlyTimeCard7Conversion = now.getHours() + 7;
+  if (hourlyTimeCard7Conversion < 10) {
+    hourlyTimeCard7Conversion = `0${hourlyTimeCard7Conversion}`;
+  }
   updateHourlyTimeCard7.innerHTML = `${hourlyTimeCard7Conversion}00`;
+
+  let displayMainIcon = document.querySelector("#current-main-image");
+
+  displayMainIcon.setAttribute("alt", response.data.weather[0].description);
+  displayMainIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let displayCurrentHourIcon = document.querySelector("#hour-current-image");
+  displayMainIcon.setAttribute("alt", response.data.weather[0].description);
+  displayCurrentHourIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let displayOneHourIcon = document.querySelector("#hour-one-image");
+  displayOneHourIcon.setAttribute("alt", response.data.weather[0].description);
+  displayOneHourIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let displayTwoHourIcon = document.querySelector("#hour-two-image");
+  displayTwoHourIcon.setAttribute("alt", response.data.weather[0].description);
+  displayTwoHourIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let displayThreeHourIcon = document.querySelector("#hour-three-image");
+  displayThreeHourIcon.setAttribute(
+    "alt",
+    response.data.weather[0].description
+  );
+  displayThreeHourIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let displayFourHourIcon = document.querySelector("#hour-four-image");
+  displayFourHourIcon.setAttribute("alt", response.data.weather[0].description);
+  displayFourHourIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let displayFiveHourIcon = document.querySelector("#hour-five-image");
+  displayFiveHourIcon.setAttribute("alt", response.data.weather[0].description);
+  displayFiveHourIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let displaySixHourIcon = document.querySelector("#hour-six-image");
+  displaySixHourIcon.setAttribute("alt", response.data.weather[0].description);
+  displaySixHourIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let displaySevenHourIcon = document.querySelector("#hour-seven-image");
+  displaySevenHourIcon.setAttribute(
+    "alt",
+    response.data.weather[0].description
+  );
+  displaySevenHourIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   getCoordinates(response.data.coord);
 }
-
 function getCoordinates(coordinates) {
   let apiKey = "383f7ea53619c38b753cfeb116648163";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
-  console.log(apiUrl);
 }
 
 function displayForecast(response) {
@@ -173,6 +258,26 @@ function displayForecast(response) {
     "#forecast-alerts-description"
   );
   displayForecastAlerts.innerHTML = response.data.alerts.description;
+
+  callForecastIcons(response.data.coord);
+}
+
+function callForecastIcons(coordinates) {
+  let apiKey = "383f7ea53619c38b753cfeb116648163";
+  let apiUrl = `pro.openweathermap.org/data/2.5/forecast/hourly?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecastIcons);
+}
+
+function displayForecastIcons(response) {
+  let displayHourOneIcon = document.querySelector("#hour-one-image");
+  displayHourOneIcon.setAttribute(
+    "alt",
+    response.data.list[0].weather.description
+  );
+  displayHourOneIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.list[0].weather.icon}@2x.png`
+  );
 }
 
 function convertToCelsius(event) {
