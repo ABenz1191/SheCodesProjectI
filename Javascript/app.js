@@ -168,6 +168,11 @@ function displayForecast(response) {
   let forecastTempSevenDisplay = Math.round(response.data.hourly[6].temp);
   forecastTempSeven.innerHTML = `${forecastTempSevenDisplay}°`;
   forecastHourSeven = Math.round(response.data.hourly[6].temp);
+
+  let displayForecastAlerts = document.querySelector(
+    "#forecast-alerts-description"
+  );
+  displayForecastAlerts.innerHTML = response.data.alerts.description;
 }
 
 function convertToCelsius(event) {
