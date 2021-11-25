@@ -122,6 +122,52 @@ function displayCurrent(response) {
   let updateHourlyTimeCard7 = document.querySelector("#hourly-cardheader-7");
   let hourlyTimeCard7Conversion = Math.round(hours + 7);
   updateHourlyTimeCard7.innerHTML = `${hourlyTimeCard7Conversion}00`;
+
+  getCoordinates(response.data.coord);
+}
+
+function getCoordinates(coordinates) {
+  let apiKey = "383f7ea53619c38b753cfeb116648163";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForecast);
+  console.log(apiUrl);
+}
+
+function displayForecast(response) {
+  let forecastTempOne = document.querySelector("#hourly-card-temp-1");
+  let forecastTempOneDisplay = Math.round(response.data.hourly[0].temp);
+  forecastTempOne.innerHTML = `${forecastTempOneDisplay}°`;
+  forecastHourOne = Math.round(response.data.hourly[0].temp);
+
+  let forecastTempTwo = document.querySelector("#hourly-card-temp-2");
+  let forecastTempTwoDisplay = Math.round(response.data.hourly[1].temp);
+  forecastTempTwo.innerHTML = `${forecastTempTwoDisplay}°`;
+  forecastHourTwo = Math.round(response.data.hourly[1].temp);
+
+  let forecastTempThree = document.querySelector("#hourly-card-temp-3");
+  let forecastTempThreeDisplay = Math.round(response.data.hourly[2].temp);
+  forecastTempThree.innerHTML = `${forecastTempThreeDisplay}°`;
+  forecastHourThree = Math.round(response.data.hourly[2].temp);
+
+  let forecastTempFour = document.querySelector("#hourly-card-temp-4");
+  let forecastTempFourDisplay = Math.round(response.data.hourly[3].temp);
+  forecastTempFour.innerHTML = `${forecastTempFourDisplay}°`;
+  forecastHourFour = Math.round(response.data.hourly[3].temp);
+
+  let forecastTempFive = document.querySelector("#hourly-card-temp-5");
+  let forecastTempFiveDisplay = Math.round(response.data.hourly[4].temp);
+  forecastTempFive.innerHTML = `${forecastTempFiveDisplay}°`;
+  forecastHourFive = Math.round(response.data.hourly[4].temp);
+
+  let forecastTempSix = document.querySelector("#hourly-card-temp-6");
+  let forecastTempSixDisplay = Math.round(response.data.hourly[5].temp);
+  forecastTempSix.innerHTML = `${forecastTempSixDisplay}°`;
+  forecastHourSix = Math.round(response.data.hourly[5].temp);
+
+  let forecastTempSeven = document.querySelector("#hourly-card-temp-7");
+  let forecastTempSevenDisplay = Math.round(response.data.hourly[6].temp);
+  forecastTempSeven.innerHTML = `${forecastTempSevenDisplay}°`;
+  forecastHourSeven = Math.round(response.data.hourly[6].temp);
 }
 
 function convertToCelsius(event) {
@@ -162,6 +208,34 @@ function convertToCelsius(event) {
 
   let heatIndexUnitsCelsius = document.querySelector("#heat-index-units");
   heatIndexUnitsCelsius.innerHTML = " °C";
+
+  let forecastHourOneCelsius = document.querySelector("#hourly-card-temp-1");
+  let forecastHourOneConversion = Math.round((forecastHourOne - 32) / 1.8);
+  forecastHourOneCelsius.innerHTML = `${forecastHourOneConversion}°`;
+
+  let forecastHourTwoCelsius = document.querySelector("#hourly-card-temp-2");
+  let forecastHourTwoConversion = Math.round((forecastHourTwo - 32) / 1.8);
+  forecastHourTwoCelsius.innerHTML = `${forecastHourTwoConversion}°`;
+
+  let forecastHourThreeCelsius = document.querySelector("#hourly-card-temp-3");
+  let forecastHourThreeConversion = Math.round((forecastHourThree - 32) / 1.8);
+  forecastHourThreeCelsius.innerHTML = `${forecastHourThreeConversion}°`;
+
+  let forecastHourFourCelsius = document.querySelector("#hourly-card-temp-4");
+  let forecastHourFourConversion = Math.round((forecastHourFour - 32) / 1.8);
+  forecastHourFourCelsius.innerHTML = `${forecastHourFourConversion}°`;
+
+  let forecastHourFiveCelsius = document.querySelector("#hourly-card-temp-5");
+  let forecastHourFiveConversion = Math.round((forecastHourFive - 32) / 1.8);
+  forecastHourFiveCelsius.innerHTML = `${forecastHourFiveConversion}°`;
+
+  let forecastHourSixCelsius = document.querySelector("#hourly-card-temp-6");
+  let forecastHourSixConversion = Math.round((forecastHourSix - 32) / 1.8);
+  forecastHourSixCelsius.innerHTML = `${forecastHourSixConversion}°`;
+
+  let forecastHourSevenCelsius = document.querySelector("#hourly-card-temp-7");
+  let forecastHourSevenConversion = Math.round((forecastHourSeven - 32) / 1.8);
+  forecastHourSevenCelsius.innerHTML = `${forecastHourSevenConversion}°`;
 }
 
 function convertToFahrenheit(event) {
@@ -195,6 +269,30 @@ function convertToFahrenheit(event) {
 
   let heatIndexUnitsFahrenheit = document.querySelector("#heat-index-units");
   heatIndexUnitsFahrenheit.innerHTML = " °F";
+
+  let forecastHourOneFahrenheit = document.querySelector("#hourly-card-temp-1");
+  forecastHourOneFahrenheit.innerHTML = `${forecastHourOne}°`;
+
+  let forecastHourTwoFahrenheit = document.querySelector("#hourly-card-temp-2");
+  forecastHourTwoFahrenheit.innerHTML = `${forecastHourTwo}°`;
+  let forecastHourThreeFahrenheit = document.querySelector(
+    "#hourly-card-temp-3"
+  );
+  forecastHourThreeFahrenheit.innerHTML = `${forecastHourThree}°`;
+  let forecastHourFourFahrenheit = document.querySelector(
+    "#hourly-card-temp-4"
+  );
+  forecastHourFourFahrenheit.innerHTML = `${forecastHourFour}°`;
+  let forecastHourFiveFahrenheit = document.querySelector(
+    "#hourly-card-temp-5"
+  );
+  forecastHourFiveFahrenheit.innerHTML = `${forecastHourFive}°`;
+  let forecastHourSixFahrenheit = document.querySelector("#hourly-card-temp-6");
+  forecastHourSixFahrenheit.innerHTML = `${forecastHourSix}°`;
+  let forecastHourSevenFahrenheit = document.querySelector(
+    "#hourly-card-temp-7"
+  );
+  forecastHourSevenFahrenheit.innerHTML = `${forecastHourSeven}°`;
 }
 
 let searchForm = document.querySelector("#search-form");
