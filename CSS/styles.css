@@ -131,14 +131,14 @@ h3 {
   left: 30px;
   width: 100%;
 }
-.todayForecast {
+.weatherAlert {
   position: relative;
   top: 70px;
   border-radius: 4px;
   border-width: 20px;
   border-color: #375c89;
 }
-.forecastText {
+.weatherAlertText {
   border-width: thin;
   border-color: #031f40;
   box-shadow: 5px 5px 5px #031f40;
