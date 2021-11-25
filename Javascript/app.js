@@ -123,21 +123,6 @@ function displayCurrent(response) {
   let hourlyTimeCard7Conversion = Math.round(hours + 7);
   updateHourlyTimeCard7.innerHTML = `${hourlyTimeCard7Conversion}00`;
 
-  let updateAlert = document.querySelector("#weather-alert-card");
-  updateAlert.innerHTML = response.data.alerts.description;
-
-  let updateCurrentMainImage = document.querySelector("#current-main-image");
-  updateCurrentMainImage.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/01d@2x.png`
-  );
-
-  let updateCurrentHourImage = document.querySelector("#hour-current-image");
-  updateCurrentHourImage.setAttribute(
-    `src`,
-    `http://openweathermap.org/img/wn/01d@2x.png`
-  );
-
   getCoordinates(response.data.coord);
 }
 
@@ -183,27 +168,6 @@ function displayForecast(response) {
   let forecastTempSevenDisplay = Math.round(response.data.hourly[6].temp);
   forecastTempSeven.innerHTML = `${forecastTempSevenDisplay}°`;
   forecastHourSeven = Math.round(response.data.hourly[6].temp);
-
-  let updateHourOneImage = document.querySelector("hour-one-image");
-  updateHourOneImage.innerHTML = response.data.hourly.weather[0].icon;
-
-  let updateHourTwoImage = document.querySelector("hour-two-image");
-  updateHourTwoImage.innerHTML = response.data.hourly.weather[1].icon;
-
-  let updateHourThreeImage = document.querySelector("hour-three-image");
-  updateHourThreeImage.innerHTML = response.data.hourly.weather[2].icon;
-
-  let updateHourFourImage = document.querySelector("hour-four-image");
-  updateHourFourImage.innerHTML = response.data.hourly.weather[3].icon;
-
-  let updateHourFiveImage = document.querySelector("hour-five-image");
-  updateHourFiveImage.innerHTML = response.data.hourly.weather[4].icon;
-
-  let updateHourSixImage = document.querySelector("hour-six-image");
-  updateHourSixImage.innerHTML = response.data.hourly.weather[5].icon;
-
-  let updateHourSevenImage = document.querySelector("hour-seven-image");
-  updateHourSevenImage.innerHTML = response.data.hourly.weather[6].icon;
 }
 
 function convertToCelsius(event) {
